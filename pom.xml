@@ -7,6 +7,6 @@
     <groupId>cn.hxdev.platfrom</groupId>
     <artifactId>hxdev-platfrom</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>jar</packaging>
 
 </project>
