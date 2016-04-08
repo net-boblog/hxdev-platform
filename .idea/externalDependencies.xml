@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalDependencies">
+    <plugin id="com.intellij.cdi" min-version="1.1" max-version="1.2" />
+    <plugin id="com.intellij.javaee" min-version="3.1" max-version="3.2" />
+    <plugin id="com.intellij.jsf" min-version="2.2" max-version="2.2" />
+    <plugin id="com.jetbrains.restWebServices" />
+  </component>
+</project>
