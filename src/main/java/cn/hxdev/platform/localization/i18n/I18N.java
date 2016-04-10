@@ -1,13 +1,12 @@
 package cn.hxdev.platform.localization.i18n;
 
-import cn.hxdev.utils.HumaniseCamelCase;
-import cn.hxdev.utils.StringUtils;
+import cn.hxdev.platform.utils.HumaniseCamelCase;
+import cn.hxdev.platform.utils.StringUtils;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.logging.Logger;
 import javax.faces.context.FacesContext;
-import javax.validation.Configuration;
 
 /**
  *

@@ -1,4 +1,4 @@
-package cn.hxdev.crm.entity;
+package cn.hxdev.apps.crm.entity;
 
 /**
  *

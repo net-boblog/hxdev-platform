@@ -4,6 +4,6 @@ package cn.hxdev.apps.core.entity.system;
  *
  * @author Javen
  */
-public class Menu {
+public class AppMenu {
     
 }

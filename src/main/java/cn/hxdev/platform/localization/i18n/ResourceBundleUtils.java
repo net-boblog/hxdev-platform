@@ -1,8 +1,8 @@
 package cn.hxdev.platform.localization.i18n;
 
+import cn.hxdev.platform.utils.DateUtils;
 import cn.hxdev.platform.utils.NumberUtils;
-import cn.hxdev.utils.DateUtils;
-import cn.hxdev.utils.StringUtils;
+import cn.hxdev.platform.utils.StringUtils;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;

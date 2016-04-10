@@ -1,4 +1,4 @@
-package cn.hxdev.utils;
+package cn.hxdev.platform.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
