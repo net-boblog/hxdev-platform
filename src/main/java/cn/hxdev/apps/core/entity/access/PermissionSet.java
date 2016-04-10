@@ -1,4 +1,4 @@
-package cn.hxdev.apps.entity.access;
+package cn.hxdev.apps.core.entity.access;
 
 /**
  *

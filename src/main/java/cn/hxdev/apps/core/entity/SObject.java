@@ -1,4 +1,4 @@
-package cn.hxdev.apps.entity;
+package cn.hxdev.apps.core.entity;
 
 /**
  *
