@@ -1,4 +1,4 @@
-package cn.hxdev.apps.core.entity.system;
+package cn.hxdev.apps.core.entity.platform;
 
 import cn.hxdev.apps.core.entity.SuperObject;
 
