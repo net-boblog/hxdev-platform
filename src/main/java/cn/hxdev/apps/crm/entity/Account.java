@@ -1,6 +1,6 @@
 package cn.hxdev.apps.crm.entity;
 
-import cn.hxdev.apps.core.entity.SuperObject;
+import cn.hxdev.platform.core.entity.SuperObject;
 
 /**
  *

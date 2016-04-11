@@ -1,4 +1,4 @@
-package cn.hxdev.apps.crm.entity;
+package cn.hxdev.platform.core.entity.user;
 
 import cn.hxdev.platform.core.entity.SuperObject;
 
@@ -6,6 +6,6 @@ import cn.hxdev.platform.core.entity.SuperObject;
  *
  * @author Javen
  */
-public class Leads extends SuperObject {
+public class UserRole extends SuperObject {
 
 }

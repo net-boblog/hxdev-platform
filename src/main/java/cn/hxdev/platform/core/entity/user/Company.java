@@ -1,4 +1,4 @@
-package cn.hxdev.apps.core.entity.user;
+package cn.hxdev.platform.core.entity.user;
 
 /**
  *
