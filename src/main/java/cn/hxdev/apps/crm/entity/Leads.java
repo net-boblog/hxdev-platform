@@ -1,4 +1,4 @@
-package cn.hxdev.apps.core.entity.system;
+package cn.hxdev.apps.crm.entity;
 
 import cn.hxdev.apps.core.entity.SuperObject;
 
@@ -6,6 +6,6 @@ import cn.hxdev.apps.core.entity.SuperObject;
  *
  * @author Javen
  */
-public class AppMenu extends SuperObject {
+public class Leads extends SuperObject {
 
 }
