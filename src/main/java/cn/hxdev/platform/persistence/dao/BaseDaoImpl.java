@@ -16,7 +16,7 @@ import org.hibernate.Session;
  *
  * @author Javen
  */
-public class StandardDaoImpl implements BaseDao {
+public class BaseDaoImpl implements BaseDao {
 
     @Override
     public EntityManager getEntityManager() {
