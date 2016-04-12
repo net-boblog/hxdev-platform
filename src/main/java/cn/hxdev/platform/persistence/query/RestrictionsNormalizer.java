@@ -1,8 +1,8 @@
 package cn.hxdev.platform.persistence.query;
 
-import com.xpert.utils.ReflectionUtils;
-import com.xpert.i18n.I18N;
-import com.xpert.utils.StringUtils;
+import cn.hxdev.platform.localization.i18n.I18N;
+import cn.hxdev.platform.utils.ReflectionUtils;
+import cn.hxdev.platform.utils.StringUtils;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.ParseException;
