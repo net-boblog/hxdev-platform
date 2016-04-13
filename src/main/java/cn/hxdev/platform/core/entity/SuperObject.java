@@ -16,12 +16,10 @@ import javax.persistence.Temporal;
  */
 @MappedSuperclass
 public abstract class SuperObject implements Serializable {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     protected Long id;
-
     @Version
     protected Long version;
     protected User createdBy;
