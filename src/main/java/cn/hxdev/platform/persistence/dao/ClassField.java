@@ -1,4 +1,4 @@
-package cn.hxdev.persistence.dao;
+package cn.hxdev.platform.persistence.dao;
 
 /**
  *

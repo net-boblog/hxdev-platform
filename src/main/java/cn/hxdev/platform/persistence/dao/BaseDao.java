@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Created by myhtls on 16/4/11.
  */
-public interface BaseDao {
+public interface BaseDao<T> {
 
     /**
      * Returns the current EntityManager
@@ -78,12 +78,7 @@ public interface BaseDao {
      */
     public void save(T object);
 
-    /**
-     * Save a object. This method call entityManager.persist
-     * @param object
-     * @param audit Audit Operation
-     */
-    public void save(T object, boolean audit);
+
 
     /**
      * Call entityManager.persist if @Id is null or entityManager.merge if is not
@@ -93,28 +88,7 @@ public interface BaseDao {
     public void saveOrMerge(T object);
 
 
-    /**
-     * Call entityManager.persist if @Id is null or entityManager.merge if is not
-     *
-     * @param object
-     * @param audit Audit Operation
-     */
-    public void saveOrMerge(T object, boolean audit);
 
-    /**
-     * Call saveOrUpdate from Session (Hibernate Implementation)
-     *
-     * @param object
-     */
-    public void saveOrUpdate(T object);
-
-    /**
-     * Call saveOrUpdate from Session (Hibernate Implementation)
-     *
-     * @param object
-     * @param audit Audit Operation
-     */
-    public void saveOrUpdate(T object, boolean audit);
 
     /**
      * Call update from Session (Hibernate Implementation)
@@ -123,13 +97,7 @@ public interface BaseDao {
      */
     public void update(T object);
 
-    /**
-     * Call update from Session (Hibernate Implementation)
-     *
-     * @param object
-     * @param audit
-     */
-    public void update(T object, boolean audit);
+
 
     /**
      * Delete a object from database. This method create a HQL to do the deletion
@@ -139,14 +107,7 @@ public interface BaseDao {
      */
     public void delete(Object id) throws DeleteException;
 
-    /**
-     * Delete a object from database. This method create a HQL to do the deletion
-     *
-     * @param id
-     * @param audit Audit Operation
-     * @throws DeleteException
-     */
-    public void delete(Object id, boolean audit) throws DeleteException;
+
 
     /**
      * Delete a object from database. This method create a HQL to do the deletion
@@ -157,15 +118,7 @@ public interface BaseDao {
      */
     public void delete(Class entityClass, Object id) throws DeleteException;
 
-    /**
-     * Delete a object from database. This method create a HQL to do the deletion
-     *
-     * @param entityClass
-     * @param id
-     * @param audit Audit Operation
-     * @throws DeleteException
-     */
-    public void delete(Class entityClass, Object id, boolean audit) throws DeleteException;
+
 
     /**
      * Delete a object from database. This method call entityManager.remove()
@@ -175,14 +128,7 @@ public interface BaseDao {
      */
     public void remove(Object object) throws DeleteException;
 
-    /**
-     * Delete a object from database. This method call entityManager.remove()
-     *
-     * @param object
-     * @param audit Audit Operation
-     * @throws DeleteException
-     */
-    public void remove(Object object, boolean audit) throws DeleteException;
+
 
     /**
      * Merge a Object. This method call entityManager.remove()
@@ -192,14 +138,6 @@ public interface BaseDao {
      */
     public T merge(T object);
 
-    /**
-     * Merge a Object. This method call entityManager.remove()
-     *
-     * @param object
-     * @param audit
-     * @return
-     */
-    public T merge(T object, boolean audit);
 
     public List<T> listAll();
 
