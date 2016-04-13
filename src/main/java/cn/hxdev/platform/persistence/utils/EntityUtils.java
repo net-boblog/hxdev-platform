@@ -1,13 +1,21 @@
 package cn.hxdev.platform.persistence.utils;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.internal.SessionFactoryImpl;
+import org.hibernate.metadata.ClassMetadata;
+import org.hibernate.persister.entity.AbstractEntityPersister;
 import org.hibernate.proxy.HibernateProxy;
 
 import javax.persistence.EmbeddedId;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +28,28 @@ public class EntityUtils {
     private static final Logger logger = Logger.getLogger(EntityUtils.class.getName());
     private static final Map<Class, String> ID_NAME_MAP = new HashMap<Class, String>();
     private static final Map<Class, AccessibleObject> ID_ACCESSIBLE_MAP = new HashMap<Class, AccessibleObject>();
+
+
+
+    /**
+     * Return mapped entities in EntityManager. Classes are get from
+     * ClassMetadata in SessionFactory
+     *
+     * @param entityManager
+     * @return
+     */
+    public static List<Class> getMappedEntities(EntityManager entityManager) {
+        SessionFactory sessionFactory = entityManager.unwrap(Session.class).getSessionFactory();
+        Map<String, ClassMetadata> map = (Map<String, ClassMetadata>) sessionFactory.getAllClassMetadata();
+        SessionFactoryImpl sessionFactoryImpl = (SessionFactoryImpl) sessionFactory;
+        List<Class> classes = new ArrayList<Class>();
+        for (String entityName : map.keySet()) {
+            Class entity = ((AbstractEntityPersister) sessionFactoryImpl.getEntityPersister(entityName)).getConcreteProxyClass();
+            classes.add(entity);
+        }
+        return classes;
+    }
+
     /**
      * Returns true if entity has a not null @Id/ @EmbeddedId
      *
