@@ -1,20 +1,80 @@
 package cn.hxdev.platform.core.entity;
 
-import cn.hxdev.platform.core.entity.user.User;
+import java.io.Serializable;
 import java.util.Date;
+import cn.hxdev.platform.core.entity.user.User;
+import javax.persistence.Version;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author Javen
  */
-public class SuperObject {
+@MappedSuperclass
+public abstract class SuperObject implements Serializable {
 
-    private User createdBy;
-    private Date createdDate;
-    private User lastModifiedBy;
-    private Date lastModifiedDate;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    protected Long id;
+
+    @Version
+    protected Long version;
+    protected User createdBy;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    protected Date createdDate;
+    protected User lastModifiedBy;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    protected Date lastModifiedDate;
 
     public SuperObject() {
+    }
+
+    // --- Overrides
+    // Check this video: https://www.youtube.com/watch?v=E-LG5DlOKBw
+    // Check & Override Hash method.
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        final SuperObject other = (SuperObject) obj;
+        if ((null != id) && (null == other.getId())) {
+            return false;
+        }
+        if ((null == id) && (null != other.getId())) {
+            return false;
+        }
+        if (id.longValue() != other.getId().longValue()) {
+            return false;
+        }
+        return true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     public User getCreatedBy() {
