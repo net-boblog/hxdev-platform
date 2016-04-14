@@ -1,13 +1,24 @@
 package cn.hxdev.platform.persistence.utils;
 
+import cn.hxdev.platform.utils.StringUtils;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.internal.SessionFactoryImpl;
+import org.hibernate.metadata.ClassMetadata;
+import org.hibernate.persister.entity.AbstractEntityPersister;
 import org.hibernate.proxy.HibernateProxy;
 
 import javax.persistence.EmbeddedId;
+import javax.persistence.EntityManager;
 import javax.persistence.Id;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +31,98 @@ public class EntityUtils {
     private static final Logger logger = Logger.getLogger(EntityUtils.class.getName());
     private static final Map<Class, String> ID_NAME_MAP = new HashMap<Class, String>();
     private static final Map<Class, AccessibleObject> ID_ACCESSIBLE_MAP = new HashMap<Class, AccessibleObject>();
+    private static final Map<Class, Class> ID_TYPE_MAP = new HashMap<Class, Class>();
+
+
+    /**
+     * Convert a string to a mapped id type.
+     *
+     * Example:
+     * <pre>
+     * <code>
+     * &#064;Id
+     * private Integer id;
+     * </code>
+     * </pre>
+     * With string "10" returns a Integer value 10
+     *
+     * @param id
+     * @param entityClass
+     * @return
+     */
+    public static Object getIdFromString(String id, Class entityClass) {
+        if (id == null || id.isEmpty()) {
+            return null;
+        }
+        try {
+            Class idType = EntityUtils.getIdType(entityClass);
+            if (idType.equals(Long.class) || idType.equals(long.class)) {
+                return Long.parseLong(StringUtils.getOnlyIntegerNumbers(id));
+            } else if (idType.equals(Integer.class) || idType.equals(int.class)) {
+                return Integer.parseInt(StringUtils.getOnlyIntegerNumbers(id));
+            } else if (idType.equals(BigInteger.class)) {
+                return new BigInteger(StringUtils.getOnlyIntegerNumbers(id));
+            } else if (idType.equals(Short.class) || idType.equals(short.class)) {
+                return Short.parseShort(StringUtils.getOnlyIntegerNumbers(id));
+            } else if (idType.equals(BigDecimal.class)) {
+                return new BigDecimal(StringUtils.getOnlyIntegerNumbers(id));
+            } else if (idType.equals(String.class)) {
+                return id;
+            } else {
+                throw new IllegalArgumentException("Type " + idType.getName() + " from entity " + entityClass.getName() + " cannot be converted");
+            }
+        } catch (NumberFormatException ex) {
+            return null;
+        }
+    }
+
+    /**
+     * Return the type of @Id/@EmbeddedId from entity. Example: Integer.class,
+     * Long.class
+     *
+     * @param clazz
+     * @return
+     */
+    public static Class getIdType(Class clazz) {
+        Class type = ID_TYPE_MAP.get(clazz);
+        if (type != null) {
+            return type;
+        }
+        AccessibleObject accessibleObject = getIdAccessibleObject(clazz);
+        if (accessibleObject instanceof Field) {
+            type = ((Field) accessibleObject).getType();
+            ID_TYPE_MAP.put(clazz, type);
+            return type;
+        }
+
+        if (accessibleObject instanceof Method) {
+            type = ((Method) accessibleObject).getReturnType();
+            ID_TYPE_MAP.put(clazz, type);
+            return type;
+        }
+        return null;
+    }
+
+
+    /**
+     * Return mapped entities in EntityManager. Classes are get from
+     * ClassMetadata in SessionFactory
+     *
+     * @param entityManager
+     * @return
+     */
+    public static List<Class> getMappedEntities(EntityManager entityManager) {
+        SessionFactory sessionFactory = entityManager.unwrap(Session.class).getSessionFactory();
+        Map<String, ClassMetadata> map = (Map<String, ClassMetadata>) sessionFactory.getAllClassMetadata();
+        SessionFactoryImpl sessionFactoryImpl = (SessionFactoryImpl) sessionFactory;
+        List<Class> classes = new ArrayList<Class>();
+        for (String entityName : map.keySet()) {
+            Class entity = ((AbstractEntityPersister) sessionFactoryImpl.getEntityPersister(entityName)).getConcreteProxyClass();
+            classes.add(entity);
+        }
+        return classes;
+    }
+
     /**
      * Returns true if entity has a not null @Id/ @EmbeddedId
      *
