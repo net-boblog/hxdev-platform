@@ -16,7 +16,4 @@ public class CmsApplication {
     public final static String Email = "";
     public final static String Phone = "";
 
-    public static String getTableName(String name) {
-        return Prefix + name;
-    }
 }
