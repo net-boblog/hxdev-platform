@@ -1,4 +1,4 @@
-package cn.hxdev.platform.logger;
+package cn.hxdev.apps.logger;
 
 /**
  *
