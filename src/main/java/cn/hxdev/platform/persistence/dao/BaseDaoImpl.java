@@ -361,6 +361,67 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         return list(getEntityClass(), getRestrictions(restriction));
     }
 
+    @Override
+    public List<T> list(List<Restriction> restrictions, String order, Integer firstResult, Integer maxResults) {
+        return list(getEntityClass(), restrictions, order, firstResult, maxResults);
+    }
+
+    @Override
+    public List<T> list(Class clazz, List<Restriction> restrictions, String order, Integer firstResult, Integer maxResults) {
+        return list(clazz, restrictions, order, firstResult, maxResults, null);
+    }
+
+    @Override
+    public List<T> list(Restriction restriction, String order, Integer firstResult, Integer maxResults) {
+        return list(getEntityClass(), getRestrictions(restriction), order, firstResult, maxResults);
+    }
+
+    @Override
+    public List<T> list(Class clazz, Restriction restriction, String order, Integer firstResult, Integer maxResults) {
+        return list(clazz, getRestrictions(restriction), order, firstResult, maxResults, null);
+    }
+
+    @Override
+    public List<T> list(List<Restriction> restrictions, String order) {
+        return list(getEntityClass(), restrictions, order);
+    }
+
+    @Override
+    public List<T> list(Class clazz, List<Restriction> restrictions, String order) {
+        return list(clazz, restrictions, order, null, null);
+    }
+
+    @Override
+    public List<T> list(Restriction restriction, String order) {
+        return list(getEntityClass(), getRestrictions(restriction), order);
+    }
+
+    @Override
+    public List<T> list(Class clazz, Restriction restriction, String order) {
+        return list(clazz, getRestrictions(restriction), order, null, null);
+    }
+
+    @Override
+    public List<T> list(Class clazz, Restriction restriction, String order, Integer firstResult, Integer maxResults, String attributes) {
+        return list(clazz, getRestrictions(restriction), order, firstResult, maxResults, attributes);
+    }
+
+    @Override
+    public List<T> list(Class clazz, List<Restriction> restrictions, String order, Integer firstResult, Integer maxResults, String attributes) {
+
+        return getQueryBuilder()
+                .select(attributes)
+                .from(clazz)
+                .add(restrictions)
+                .orderBy(order)
+                .setFirstResult(firstResult)
+                .setMaxResults(maxResults)
+                .getResultList(clazz);
+
+    }
+
+
+
 
     @Override
     public <U> U getInitialized(U object) {
