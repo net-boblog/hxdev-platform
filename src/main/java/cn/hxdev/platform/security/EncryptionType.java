@@ -7,7 +7,7 @@ package cn.hxdev.security;
 public enum EncryptionType {
 
     
-    MD5("MD5"), SHA256("SHA-256"), SHA512("SHA-512"); 
+    MD5("MD5"), SHA256("SHA-256"), SHA512("SHA-512"),AES("aes"),RSA("rsa");
     
     private final String code;
 
