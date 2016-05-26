@@ -1,18 +1,18 @@
 package cn.hxdev.platform.utils;
 
-import cn.hxdev.security.EncryptionType;
+import cn.hxdev.platform.security.EncryptionType;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Utility class to generate Hash
+ * 工具类来生成散列
  *
  * @author HXDEV.CN
  */
 public class Encryption {
 
     /**
-     * Return a string based on java MessageDigest API
+     * 基于java MessageDigest API返回一个字符串
      *
      * @param algorithm
      * @param string
@@ -30,7 +30,7 @@ public class Encryption {
     }
 
     /**
-     * Return a hash based on MD5
+     *返回一个基于MD5散列
      *
      * @param string
      * @param salt

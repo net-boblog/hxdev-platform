@@ -1,4 +1,4 @@
-package cn.hxdev.security;
+package cn.hxdev.platform.security;
 
 /**
  *
