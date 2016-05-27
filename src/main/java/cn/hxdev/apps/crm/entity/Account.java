@@ -1,7 +1,7 @@
 package cn.hxdev.apps.crm.entity;
 
 import cn.hxdev.platform.core.entity.SuperObject;
-import cn.hxdev.platform.core.entity.user.User;
+import cn.hxdev.platform.core.entity.base.User;
 
 /**
  *

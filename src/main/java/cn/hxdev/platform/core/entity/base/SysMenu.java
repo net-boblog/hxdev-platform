@@ -1,4 +1,4 @@
-package cn.hxdev.platform.core.entity.user;
+package cn.hxdev.platform.core.entity.base;
 
 import cn.hxdev.platform.core.entity.SuperObject;
 
@@ -7,6 +7,8 @@ import cn.hxdev.platform.core.entity.SuperObject;
  * @author Javen
  */
 public class SysMenu extends SuperObject {
+    
+    private static final long serialVersionUID = -2496856862228425715L;
 
     private String Name;
     private String Sequence;

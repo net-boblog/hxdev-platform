@@ -2,7 +2,7 @@ package cn.hxdev.platform.core.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import cn.hxdev.platform.core.entity.user.User;
+import cn.hxdev.platform.core.entity.base.User;
 import javax.persistence.Version;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

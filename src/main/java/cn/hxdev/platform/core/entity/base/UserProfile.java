@@ -1,4 +1,4 @@
-package cn.hxdev.platform.core.entity.user;
+package cn.hxdev.platform.core.entity.base;
 
 import cn.hxdev.platform.core.entity.SuperObject;
 

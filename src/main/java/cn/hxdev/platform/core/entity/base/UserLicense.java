@@ -1,4 +1,4 @@
-package cn.hxdev.platform.core.entity.user;
+package cn.hxdev.platform.core.entity.base;
 
 import cn.hxdev.platform.core.entity.SuperObject;
 
@@ -6,13 +6,14 @@ import cn.hxdev.platform.core.entity.SuperObject;
  *
  * @author Javen
  */
-public class UserRole extends SuperObject {
+public class UserLicense extends SuperObject {
     
-    private static final long serialVersionUID = 5174947774781000077L;
+    private static final long serialVersionUID = 3777614081349551520L;
+    
+    // Developer, Administrator, PortalUser
 
     private String Name;
     private String Description;
-    private UserRole ParentRoleId;
 
     public String getName() {
         return Name;
@@ -28,14 +29,6 @@ public class UserRole extends SuperObject {
 
     public void setDescription(String Description) {
         this.Description = Description;
-    }
-
-    public UserRole getParentRoleId() {
-        return ParentRoleId;
-    }
-
-    public void setParentRoleId(UserRole ParentRoleId) {
-        this.ParentRoleId = ParentRoleId;
     }
 
 }
