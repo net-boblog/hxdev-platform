@@ -6,13 +6,12 @@ import cn.hxdev.platform.core.entity.SuperObject;
  *
  * @author Javen
  */
-public class UserRole extends SuperObject {
-    
-    private static final long serialVersionUID = 5174947774781000077L;
+public class SysMenu extends SuperObject {
 
     private String Name;
+    private String Sequence;
     private String Description;
-    private UserRole ParentRoleId;
+    private SysMenu ParentMenuId;
 
     public String getName() {
         return Name;
@@ -20,6 +19,14 @@ public class UserRole extends SuperObject {
 
     public void setName(String Name) {
         this.Name = Name;
+    }
+
+    public String getSequence() {
+        return Sequence;
+    }
+
+    public void setSequence(String Sequence) {
+        this.Sequence = Sequence;
     }
 
     public String getDescription() {
@@ -30,12 +37,12 @@ public class UserRole extends SuperObject {
         this.Description = Description;
     }
 
-    public UserRole getParentRoleId() {
-        return ParentRoleId;
+    public SysMenu getParentMenuId() {
+        return ParentMenuId;
     }
 
-    public void setParentRoleId(UserRole ParentRoleId) {
-        this.ParentRoleId = ParentRoleId;
+    public void setParentMenuId(SysMenu ParentMenuId) {
+        this.ParentMenuId = ParentMenuId;
     }
 
 }
