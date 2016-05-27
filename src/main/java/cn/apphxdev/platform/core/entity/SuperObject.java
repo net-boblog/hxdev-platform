@@ -1,8 +1,8 @@
-package cn.apphxdev.platform.core.entity;
+package cn.hxdev.platform.core.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import cn.apphxdev.platform.core.entity.user.User;
+import cn.hxdev.platform.core.entity.user.User;
 import javax.persistence.Version;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
