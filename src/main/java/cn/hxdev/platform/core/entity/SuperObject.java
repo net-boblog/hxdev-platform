@@ -16,16 +16,23 @@ import javax.persistence.Temporal;
  */
 @MappedSuperclass
 public abstract class SuperObject implements Serializable {
+    private static final long serialVersionUID = 6152279535795420730L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
+    
     @Version
     protected Long version;
+    
     protected User createdBy;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     protected Date createdDate;
+    
+    
     protected User lastModifiedBy;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     protected Date lastModifiedDate;
 
