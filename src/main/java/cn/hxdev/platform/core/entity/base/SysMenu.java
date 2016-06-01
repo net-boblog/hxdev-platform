@@ -51,6 +51,9 @@ public class SysMenu extends SuperObject implements java.io.Serializable,Cloneab
     @Column(name = "icon",length = 200)
     private String icon;
 
+    @Column(name = "url",length = 200)
+    private String url;
+
 
     public String getDescription() {
         return description;
@@ -92,5 +95,13 @@ public class SysMenu extends SuperObject implements java.io.Serializable,Cloneab
 
     public void setSequence(int sequence) {
         this.sequence = sequence;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
